@@ -9,10 +9,10 @@ The font size here is set to 62.5% so that
 a little easier
 */
 body {
-	margin: 0 ;
+	margin: 0 auto;
 	width: 800px;
 	padding: 0;
-	background: #7a2122 url('../images/body_bg.gif') repeat-x top;
+	background: #6e0427 url('../images/body_bg.gif') repeat-x top;
 	font-family: Helvetica, sans-serif;
 	font-size: 62.5%;
 	color: #333;
@@ -48,34 +48,7 @@ span.amp {
 	font-style: italic;
 }
 
-/*
-"margin: 0 auto" with a width will center the layout
-in the browser window
-@media only screen and (max-width: 480px) {
-#masthead{
-	 
-	margin: 0 auto ;
-	margin-top: 20px;
-	width: 480px;
-	color: #fff;
-}
-#wrap {
-	clear: both;
-	margin: 0 auto;
-	padding: 10px;
-	width: 460px;
-	background: #fff;
-	border: 10px solid #5c0505;
-}
-#content, #sidebar {
-	width: 400px;
-	margin: 20px 0 20px 0;
-	padding: 10px;
-}
-
-}
-*/
-
+ 
 #masthead {
 	margin: 0 auto ;
 	margin-top: 20px;
