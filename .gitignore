@@ -1,3 +1,4 @@
 # Build and Release Folders
 *.mp4
 temp/
+node_modules/*
