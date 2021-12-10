@@ -16,6 +16,11 @@ server.get("/portfolio", function(req, res){
    res.send(portfolios);
 })
 
-server.listen(8080, function(){
+server.get("/contact", function(req, res){
+    console.log(req.query);
+    res.redirect("/");
+})
+
+server.listen(80, function(){
     console.log("Server is running at port 8080!")
 })
