@@ -1,8 +1,12 @@
 var express = require("express");
+var bodyParser = require("body-parser");
 
 server = express();
 
 server.use(express.static("Vue_Bootstrap"));//web root
+server.use(bodyParser.urlencoded());
+server.use(bodyParser.json());
+
 
 server.get("/portfolio", function(req, res){
     portfolios= [
@@ -19,6 +23,11 @@ server.get("/portfolio", function(req, res){
 server.get("/contact", function(req, res){
     console.log(req.query);
     res.redirect("/");
+})
+
+server.post("/contact_me", function(req, res){
+    console.log(req.body);
+    res.end()
 })
 
 server.listen(80, function(){
