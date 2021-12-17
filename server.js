@@ -12,6 +12,8 @@ var DB = require("nedb-promises");
 var Users = DB.create("users.db")
 var Contact = DB.create("contact.db")
 
+const formidable = require('formidable');
+
 server.get("/portfolio", function(req, res){
     portfolios= [
         { href: "#portfolioModal1", imgSrc: "img/portfolio/roundicons.png", title: "Round Icons", text: "Graphic Design" },
@@ -32,6 +34,7 @@ server.get("/users", function(req, res){
 
 server.get("/contact", function(req, res){
     console.log(req.query);
+    
     res.redirect("/");
 })
 
@@ -40,6 +43,20 @@ server.post("/contact_me", function(req, res){
     //check 
     Contact.insert(req.body);
     res.end()
+})
+
+server.post("/contact_file", function(req, res){
+     var form = formidable({maxFileSize:300*1024});
+     form.parse(req, function(err, fields, files){
+         if(err){
+             res.status(400).send({error: err.message})
+         }
+         else{
+             //move file to uploaded file path
+             //write fields to db
+             res.end();
+         }
+     })
 })
 
 server.listen(80, function(){
