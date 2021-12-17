@@ -1,12 +1,16 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
+
 server = express();
 
 server.use(express.static("Vue_Bootstrap"));//web root
 server.use(bodyParser.urlencoded());
 server.use(bodyParser.json());
 
+var DB = require("nedb-promises");
+var Users = DB.create("users.db")
+var Contact = DB.create("contact.db")
 
 server.get("/portfolio", function(req, res){
     portfolios= [
@@ -20,6 +24,12 @@ server.get("/portfolio", function(req, res){
    res.send(portfolios);
 })
 
+server.get("/users", function(req, res){
+    Users.find({}).then( (result)=>{
+        res.send(result);
+    } )
+})
+
 server.get("/contact", function(req, res){
     console.log(req.query);
     res.redirect("/");
@@ -27,6 +37,8 @@ server.get("/contact", function(req, res){
 
 server.post("/contact_me", function(req, res){
     console.log(req.body);
+    //check 
+    Contact.insert(req.body);
     res.end()
 })
 

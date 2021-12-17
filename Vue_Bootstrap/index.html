@@ -652,7 +652,8 @@
             if($("#team").is(":visible"))
                 return;
             $.ajax({
-                url: "https://ilab.nutc.edu.tw/users",
+                //url: "https://ilab.nutc.edu.tw/users",
+                url: "/users",
                 method: "get",
                 dataType: "json",
                 success: function (users) {
