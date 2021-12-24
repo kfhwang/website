@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-
+var fs = require("fs");
 server = express();
 
 server.use(express.static("Vue_Bootstrap"));//web root
@@ -52,8 +52,11 @@ server.post("/contact_file", function(req, res){
              res.status(400).send({error: err.message})
          }
          else{
+            var uploadPath="Vue_Bootstrap/upload";
              //move file to uploaded file path
+            fs.renameSync(files.file.filepath, uploadPath+"/"+files.file.originalFilename);
              //write fields to db
+
              res.end();
          }
      })
